@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css"></link>  
     <script src="../public/jquery/jquery.mim.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../public/js/functions.js"></script>
 </head>
 
 <body>
@@ -19,6 +20,15 @@
             <li class="breadcrumb-item active" aria-current="page">Data</li>
         </ol>
     </nav>
+
+    <div class="container mt-5">
+        <button type="button" class="btn btn-warning" onclick="alertClient()">não clique aqui</button>
+        <button type="button" class="btn btn-primary" onclick="gerarMsg()">mudar mensagem</button>
+        <div id="gerar-msg">
+            uma mensagem
+        </div>
+
+    </div>
 
     <div class="container mt-5">
         <h1>Bootstrap Demo</h1>
