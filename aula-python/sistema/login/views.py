@@ -15,11 +15,10 @@ class LoginView(View):
     def get(self, request, *args, **kwargs):
         form = self.form_class()
 
-        if request.user.is_authenticated:
-            # Se o usuário já estiver autenticado, redirecione para a página inicial
-             return render(request, self.template_name2, {'msg': 'teste'})
-        else:
-            return render(request, self.template_name, {'form': form})
+        if not request.user.is_authenticated:
+             return render(request, self.template_name, {'form': form})
+        
+        return render(request, self.template_name2, {'msg': 'teste'})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -31,7 +30,7 @@ class LoginView(View):
             if user is not None and user.is_active:
                 login(request, user)
                 # Redirecione para onde quiser após o login
-                return render(request, self.template_name, {'form': form})
+                return render(request, self.template_name2, {'msg': 'teste'})
             else:
                 # Se o usuário não estiver ativo, exiba uma mensagem de erro ou redirecione para outra página
                 # Aqui vamos redirecionar de volta para a página de login com uma mensagem de erro
